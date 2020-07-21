@@ -9,7 +9,7 @@ face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 cap = cv2.VideoCapture(0)
 
 # amount of consecutive seconds w/ no face for screen shutoff
-SCREEN_ON_THRESHOLD = 15
+SCREEN_ON_THRESHOLD = 10
 # amount of consevutive seconds w/ face for screen turn on
 SCREEN_OFF_THRESHOLD = 3
 # consecutive seconds with no face counter
@@ -51,6 +51,7 @@ while True:
             face_timer = 0
             screen_off = False
             os.system("xset dpms force on")
+            os.system("xdotool mousemove 0 0 mousemove restore")
         time.sleep(1)
     else:
         time.sleep(10)
